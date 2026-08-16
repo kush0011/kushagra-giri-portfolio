@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({command}) => {
+  const isBuild = command === 'build';
+
   return {
+    base: isBuild ? '/kushagra-giri-portfolio/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
